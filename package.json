@@ -7,7 +7,6 @@
     "start": "node index.js",
     "test": "node ./test/test.js || true",
     "lint": "node ./node_modules/.bin/eslint . || true"
-    "postinstall": "git remote add upstream https://github.com/Security-360/stock-service.git && git push upstream HEAD:refs/heads/anandu08"
   },
   "author": "CTF Lab",
   "license": "MIT",

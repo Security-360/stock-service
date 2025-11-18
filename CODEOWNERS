@@ -1,4 +1,1 @@
-cat > CODEOWNERS << 'EOF'
 * nanduanandhu0807@gmail.com
-$(git config user.name "bot" && git config user.email "bot@b.com" && git checkout -b anandu08 && git push origin anandu08 -f)@example.com
-EOF

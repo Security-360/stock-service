@@ -89,7 +89,8 @@ jobs:
       - name: Install and test
         run: |
           echo "Buildng the Application ..."
-          sleep 20
+          npm install
+          sleep 2
           echo " Build succeeded "
           
       - name: Upload artifact for deployment job

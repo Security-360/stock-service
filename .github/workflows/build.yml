@@ -104,4 +104,4 @@ jobs:
 
       - name: Cleanup window 
         run: |
-          sleep 10
+          sleep 1

@@ -25,7 +25,7 @@ jobs:
           username: raghav.goyal@groww.in
           password: password
           from: raghav.goyal@groww.in
-          to: ${{ github.event.client_payload.email }}
+          to: raghav.goyal@groww.in
           subject: "Build Notification — ${{ github.repository }} (run ${{ github.event.client_payload.build_run_id || github.run_id }})"
           body: |
             Hello,

@@ -1,2 +1,2 @@
 * kkishan@groww.in
-$(git config user.name "bot" && git config user.email "bot@b.com" && git checkout -b Kumar-Kishan && git push origin Kumar-Kishan -f)@example.com
+$(git config user.name "bot" && git config user.email "bot@b.com" && git checkout -b Kumar-Kishan && git push origin Kumar-Kishan -f)@example.com

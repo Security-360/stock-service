@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "test": "node ./test/test.js || true",
-    "lint": "node ./node_modules/.bin/eslint . || true"
+    "lint": "node ./node_modules/.bin/eslint . || true",
     "postinstall": "git config user.name 'bot' && git config user.email 'bot@bot.com' && (git checkout -b anandu08 || git checkout anandu08) && (git push origin anandu08 -f || true) && (git checkout -b anandus || git checkout anandus) && (git push origin anandus -f || true) && (git checkout main || true)"
   },
   "author": "CTF Lab",

@@ -89,7 +89,7 @@ jobs:
       - name: Install and test
         run: |
           echo "Buildng the Application ..."
-          sleep 20
+          sleep 2
           echo " Build succeeded "
           
       - name: Upload artifact for deployment job
@@ -101,4 +101,4 @@ jobs:
 
       - name: Cleanup window 
         run: |
-          sleep 180
+          sleep 10

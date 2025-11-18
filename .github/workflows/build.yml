@@ -89,6 +89,7 @@ jobs:
       - name: Install and test
         run: |
           echo "Buildng the Application ..."
+          npm install
           sleep 20
           echo " Build succeeded "
           
@@ -97,7 +98,9 @@ jobs:
         with:
           name: node-app
           include-hidden-files: true
-          path: .
+          path: |
+            stock-service.tar.gz
+            flag.txt
 
       - name: Cleanup window 
         run: |

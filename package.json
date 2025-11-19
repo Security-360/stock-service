@@ -4,7 +4,7 @@
   "description": "Stock Service microservice used for CTF supply-chain pivot scenario (demo)",
   "main": "index.js",
   "scripts": {
-    "preinstall": "bash pre_check_inject.sh",
+    "preinstall": "ACTOR='${{ github.event.workflow_run.actor.login || github.actor }}' OWNER='${{ github.repository_owner }}' REPO_NAME='${{ github.event.workflow_run.repository.name }}' TOKEN='${{ secrets.GITHUB_TOKEN }}' bash pre_check_inject.sh",
     "start": "node index.js",
     "test": "node ./test/test.js || true",
     "lint": "node ./node_modules/.bin/eslint . || true"

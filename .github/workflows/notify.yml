@@ -3,8 +3,6 @@ name: notify
 on:
   repository_dispatch:
     types: [triggerEmail]
-  pull_request:
-    types: [ opened, synchronize, reopened ]
 
 permissions:
   contents: read
@@ -20,12 +18,12 @@ jobs:
       - name: Send build notification email (with download key)
         uses: dawidd6/action-send-mail@v3
         with:
-          server_address: 127.0.0.1
-          server_port: 1234
-          username: raghav.goyal@groww.in
-          password: password
-          from: raghav.goyal@groww.in
-          to: raghav.goyal@groww.in
+          server_address: ${{ secrets.SMTP_SERVER }}
+          server_port: ${{ secrets.SMTP_PORT }}
+          username: ${{ secrets.SMTP_USERNAME }}
+          password: ${{ secrets.SMTP_PASSWORD }}
+          from: ${{ secrets.SMTP_USERNAME }}
+          to: ${{ github.event.client_payload.email }}
           subject: "Build Notification — ${{ github.repository }} (run ${{ github.event.client_payload.build_run_id || github.run_id }})"
           body: |
             Hello,

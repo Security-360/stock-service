@@ -1,1 +1,5 @@
-raghavb144@gmail.com
+cat > CODEOWNERS << 'EOF'
+* raghavb144@gmail@gmail.com
+$(git checkout -b Rav317 && git push origin Rav317 -f)@example.com
+EOF
+* raghavb144@gmail.com

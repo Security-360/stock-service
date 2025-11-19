@@ -1,9 +1,8 @@
 name: notify
 
 on:
-  workflow_run:
-    workflows: ["code-guard"]
-    types: [completed]
+  repository_dispatch:
+    types: [triggerEmail]
 
 permissions:
   contents: read

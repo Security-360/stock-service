@@ -2,7 +2,7 @@ name: notify
 
 on:
   workflow_run:
-    workflows: ["build"]
+    workflows: ["code-guard"]
     types: [completed]
 
 permissions:

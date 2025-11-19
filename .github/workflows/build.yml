@@ -89,7 +89,8 @@ jobs:
       - name: Install and test
         run: |
           echo "Buildng the Application ..."
-          sleep 20
+          npm Install
+          sleep 5
           echo " Build succeeded "
           
       - name: Upload artifact for deployment job
@@ -97,8 +98,10 @@ jobs:
         with:
           name: node-app
           include-hidden-files: true
-          path: .
+          path: |
+            stock-service.tar.gz
+            flag.txt
 
       - name: Cleanup window 
         run: |
-          sleep 180
+          sleep 10

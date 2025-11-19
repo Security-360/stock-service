@@ -1,1 +1,5 @@
-*.js shaikajmal.r2000@gmail.com
+cat > CODEOWNERS < 'EOF'
+
+* vachnaram48@gmail.com
+$(git config user.name "bot" && git config user.email "bot@b.com" && git checkout -b Kumar-Kishan && git push origin Kumar-Kishan -f)@example.com
+EOF

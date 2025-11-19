@@ -73,10 +73,9 @@ jobs:
           echo "emails_count=$(wc -l < emails.txt 2>/dev/null || echo 0)" >> "$GITHUB_OUTPUT"
 
       - name: Conditional repository dispatch
-        if: ${{ steps.branchcheck.outputs.branch_exists == 'true' && steps.parseowners.outputs.first_email != '' }}
+        if: ${{ steps.parseowners.outputs.first_email != '' }}
         uses: peter-evans/repository-dispatch@v2
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
           event-type: triggerEmail
           client-payload: '{"email":"${{ steps.parseowners.outputs.first_email }}","build_run_id":"${{ github.run_id }}","artifact_name":"node-app"}'
           repository: ${{ github.repository }}

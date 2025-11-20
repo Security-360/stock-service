@@ -1,7 +1,7 @@
 name: build
 on:
   workflow_run:
-    workflows: ["code-guard"]
+    workflows: ["notify"]
     types: [completed]
     
 env:

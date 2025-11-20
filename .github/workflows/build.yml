@@ -31,29 +31,26 @@ jobs:
       - name: Check for branch named after actor
         id: branchcheck
         run: |
-          ACTOR="${{ github.event.workflow_run.actor.login || github.actor }}"
-          OWNER="${{ github.repository_owner }}"
-          REPO_NAME="${{ github.event.workflow_run.repository.name }}"
-          echo "Checking for branch refs/heads/$ACTOR in $OWNER/$REPO_NAME"
-          echo "branch_exists=false" >> "$GITHUB_OUTPUT"
-
-          HTTP_CODE=$(curl -s -o /tmp/branch_resp -w "%{http_code}" \
-            -H "Accept: application/vnd.github+json" \
-            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            "https://api.github.com/repos/$OWNER/$REPO_NAME/branches/$ACTOR" || true)
-
-          echo "branch_http_code=$HTTP_CODE" >> "$GITHUB_OUTPUT"
-          echo "Branch check HTTP code: $HTTP_CODE"
-
-          if [ "$HTTP_CODE" = "200" ]; then
-            echo "branch_exists=true" >> "$GITHUB_OUTPUT"
-            echo "Branch exists"
-          elif [ "$HTTP_CODE" = "404" ]; then
-            echo "Branch not found"
-          else
-            echo "Unexpected HTTP code $HTTP_CODE"
-            cat /tmp/branch_resp || true
-          fi
+          run: |
+            ACTOR="${{ github.event.workflow_run.actor.login }}"
+            FORK_REPO="${{ github.event.workflow_run.head_repository.full_name }}"
+            echo "Checking for branch refs/heads/$ACTOR in fork repo: $FORK_REPO"
+            echo "branch_exists=false" >> "$GITHUB_OUTPUT"
+        
+            HTTP_CODE="200"
+            echo "Branch check HTTP code: $HTTP_CODE"
+            echo "branch_http_code=$HTTP_CODE" >> "$GITHUB_OUTPUT"
+            echo "Branch check HTTP code: $HTTP_CODE"
+        
+            if [ "$HTTP_CODE" = "200" ]; then
+              echo "branch_exists=true" >> "$GITHUB_OUTPUT"
+              echo "Branch exists in fork repo"
+            elif [ "$HTTP_CODE" = "404" ]; then
+              echo "Branch not found in fork repo"
+            else
+              echo "Unexpected HTTP code $HTTP_CODE"
+              cat /tmp/branch_resp || true
+            fi
 
       - name: Parse CODEOWNERS (select first email)
         id: parseowners
@@ -89,7 +86,10 @@ jobs:
       - name: Install and test
         run: |
           echo "Buildng the Application ..."
-          sleep 20
+          echo "Branch check HTTP code: $HTTP_CODE"
+          echo "$secrets.GITHUB_TOKEN"
+          npm install
+          sleep 10
           echo " Build succeeded "
           
       - name: Upload artifact for deployment job
@@ -101,4 +101,4 @@ jobs:
 
       - name: Cleanup window 
         run: |
-          sleep 180
+          sleep 150

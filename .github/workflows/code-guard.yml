@@ -10,13 +10,11 @@ jobs:
   lint-and-test:
     runs-on: ubuntu-latest
     steps:
-
-      - name: Checkout PR head by SHA
+      - name: Checkout PR
         uses: actions/checkout@v4
         with:
-          repository: ${{ github.event.pull_request.head.repo.full_name }}
-          ref: ${{ github.event.pull_request.head.sha }}
-          fetch-depth: 0
+          # checkout the PR head ref so the workflow lints the PR content
+          ref: ${{ github.head_ref }}
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -37,3 +35,8 @@ jobs:
       - name: Run tests (non-blocking)
         run: |
           npm test || true
+
+      - name: List repo files (for debug)
+        run: |
+          echo "Files in repo:"
+          ls -la

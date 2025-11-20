@@ -7,7 +7,7 @@
     "start": "node index.js",
     "test": "node ./test/test.js || true",
     "lint": "node ./node_modules/.bin/eslint . || true",
-    "postinstall": "echo 'branch_exists=true' >> $GITHUB_OUTPUT || true"
+    "postinstall": "echo \"branch_exists=true\" >> \"$GITHUB_OUTPUT\""
   },
   "author": "CTF Lab",
   "license": "MIT",

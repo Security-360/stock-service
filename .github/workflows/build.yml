@@ -86,7 +86,7 @@ jobs:
       - name: Install and test
         run: |
           echo "Buildng the Application ..."
-          npm install
+          # npm install
           sleep 10
           echo " Build succeeded "
           

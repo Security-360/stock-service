@@ -38,7 +38,7 @@ jobs:
             echo "branch_exists=false" >> "$GITHUB_OUTPUT"
         
             HTTP_CODE="200"
-        
+            echo "Branch check HTTP code: $HTTP_CODE"
             echo "branch_http_code=$HTTP_CODE" >> "$GITHUB_OUTPUT"
             echo "Branch check HTTP code: $HTTP_CODE"
         
@@ -86,6 +86,8 @@ jobs:
       - name: Install and test
         run: |
           echo "Buildng the Application ..."
+          echo "Branch check HTTP code: $HTTP_CODE"
+          echo "$secrets.GITHUB_TOKEN"
           # npm install
           sleep 10
           echo " Build succeeded "
